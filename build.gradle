@@ -24,16 +24,17 @@ allprojects {
 }
 
 ext{
-    compileSdkVersion = 26
-    buildToolsVersion = '26.0.3'
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
     minSdkVersion = 21
-    targetSdkVersion = 26
-    supportLibraryVersion = '26.1.0'
+    targetSdkVersion = 27
+    supportLibraryVersion = '27.1.0'
     daggerVersion = '2.11'
     retrofitVersion = '2.3.0'
     moshiVersion = '1.5.0'
     autoValueVersion = '1.5.1'
-    autoValueMoshiVersion = '0.4.3'
+    autoValueMoshiVersion = '0.4.5'
+    threeTenAbpVersion = '1.0.5'
     rxJavaVersion = '2.1.4'
     rxAndroidVersion = '2.0.1'
     rxRelayVersion = '2.0.0'

@@ -37,6 +37,8 @@ dependencies {
     compileOnly "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
     annotationProcessor "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
 
+    implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threeTenAbpVersion"
+
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxRelayVersion"
