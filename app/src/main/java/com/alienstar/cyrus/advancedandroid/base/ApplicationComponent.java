@@ -1,5 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.base;
 
+import com.alienstar.cyrus.advancedandroid.data.RepoServiceModule;
+import com.alienstar.cyrus.advancedandroid.networking.ServiceModule;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -11,6 +14,8 @@ import dagger.Component;
 @Component(modules = {
         ApplicationModule.class,
         ActivityBindingModule.class,
+        ServiceModule.class,
+        RepoServiceModule.class,
 })
 public interface ApplicationComponent {
     void inject(MyApplication myApplication);
