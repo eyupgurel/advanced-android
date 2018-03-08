@@ -42,7 +42,7 @@ public abstract class BaseController extends Controller {
         unbinder = ButterKnife.bind(this, view);
         onViewBound(view);
         disposables.addAll(subscriptions());
-        return null;
+        return view;
     }
 
     @Override
