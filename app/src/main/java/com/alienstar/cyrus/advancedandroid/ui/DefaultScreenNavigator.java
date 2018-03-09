@@ -1,7 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
 import com.alienstar.cyrus.advancedandroid.di.ActivityScope;
-import com.alienstar.cyrus.advancedandroid.di.ScreenInjector;
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
