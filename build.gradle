@@ -41,7 +41,11 @@ ext{
     rxRelayVersion = '2.0.0'
     conductorVersion = '2.1.4'
     timberVersion = '4.6.1'
-    butterknifeVersion='8.8.1'
+    butterknifeVersion ='8.8.1'
+    mockitoVersion ='2.15.0'
+    junitVersion = '4.12'
+    espressoVersion = '3.0.1'
+    testRunnerVersion = '1.0.1'
 }
 
 task clean(type: Delete) {
