@@ -25,6 +25,7 @@ public class ActivityInjector {
     ActivityInjector(Map<Class<? extends Activity>, Provider<AndroidInjector.Factory<? extends Activity>>> activityInjectors){
         this.activityInjectors = activityInjectors;
     }
+    @SuppressWarnings("unchecked")
     void inject (Activity activity) {
         if(!(activity instanceof BaseActivity)){
             throw new IllegalArgumentException("Activity must extend BaseActivity");

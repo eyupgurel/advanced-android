@@ -1,7 +1,4 @@
 package com.alienstar.cyrus.advancedandroid.networking;
-
-import android.widget.Adapter;
-
 import com.alienstar.cyrus.advancedandroid.model.AdapterFactory;
 import com.alienstar.cyrus.advancedandroid.model.ZonedDateTimeAdapter;
 import com.squareup.moshi.Moshi;

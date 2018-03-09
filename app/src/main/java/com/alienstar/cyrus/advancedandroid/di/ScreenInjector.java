@@ -34,6 +34,7 @@ public class ScreenInjector {
             cache.get(instanceId).inject(controller);
             return;
         }
+        @SuppressWarnings("unchecked")
         AndroidInjector.Factory<Controller> injectorFactory = (AndroidInjector.Factory<Controller>)screenInjectors.get(controller.getClass()).get();
         AndroidInjector<Controller> injector = injectorFactory.create(controller);
         cache.put(instanceId, injector);
