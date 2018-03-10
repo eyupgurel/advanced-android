@@ -1,9 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.data;
 
-import com.alienstar.cyrus.advancedandroid.model.Repo;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
