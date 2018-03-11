@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Advanced Android</string>
-    <string name="api_error_repos">Error loading repos</string>
+    <string name="api_error_repos">Error loading Repos</string>
+    <string name="creation_date_label">Created:</string>
+    <string name="updated_date_label">Last Updated:</string>
+    <string name="contributors_label">Contributors</string>
+    <string name="api_error_single_repo">Error loading repo details</string>
+    <string name="api_error_contributors">Error loading contributors</string>
+    <string name="content_description_avatar_image">Avatar Image</string>
+    <string name="screen_title_trending">Trending Repos</string>
 </resources>

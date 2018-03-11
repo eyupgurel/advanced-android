@@ -1,5 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
+import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
 import com.alienstar.cyrus.advancedandroid.data.RepoRequester;
 import com.alienstar.cyrus.advancedandroid.di.ScreenScope;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
@@ -13,17 +14,17 @@ import javax.inject.Inject;
 class TrendingReposPresenter implements RepoAdapter.RepoClickedListener{
 
     private TrendingReposViewModel viewModel;
-    private RepoRequester repoRequester;
+    private RepoRepository repoRepository;
 
     @Inject
-    TrendingReposPresenter(TrendingReposViewModel viewModel, RepoRequester repoRequester){
+    TrendingReposPresenter(TrendingReposViewModel viewModel, RepoRepository repoRepository){
         this.viewModel = viewModel;
-        this.repoRequester = repoRequester;
+        this.repoRepository = repoRepository;
         loadRepos();
     }
 
     private void loadRepos() {
-        repoRequester.getTrendingRepos()
+        repoRepository.getTrendingRepos()
                 .doOnSubscribe(__ -> viewModel.loadingUpdated().accept(true))
                 .doOnEvent((d,t) -> viewModel.loadingUpdated().accept(false))
                 .subscribe(viewModel.reposUpdated(), viewModel.onError());
