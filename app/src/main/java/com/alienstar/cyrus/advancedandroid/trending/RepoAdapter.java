@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 
-class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
+public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
 
     private final RepoClickedListener listener;
     private final List<Repo> data = new ArrayList<>();
@@ -88,7 +88,6 @@ class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
     }
 
     interface RepoClickedListener {
-
         void onRepoClicked(Repo repo);
     }
 }

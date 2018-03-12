@@ -15,6 +15,8 @@ import com.alienstar.cyrus.advancedandroid.data.RepoRequester;
 import com.alienstar.cyrus.advancedandroid.data.TrendingReposResponse;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
+import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
+
 import io.reactivex.Single;
 import io.reactivex.functions.Consumer;
 
@@ -29,6 +31,7 @@ public class TrendingReposPresenterTest {
     @Mock Consumer<Throwable> onErrorConsumer;
     @Mock Consumer<List<Repo>> onSuccessConsumer;
     @Mock Consumer<Boolean> loadingConsumer;
+    @Mock ScreenNavigator screenNavigator;
 
     private TrendingReposPresenter presenter;
 
@@ -82,7 +85,12 @@ public class TrendingReposPresenterTest {
 
     @Test
     public void onRepoClicked() throws Exception {
-        //TODO
+        setUpSuccess();
+        initializePresenter();
+
+        Repo repo = TestUtils.loadJson("mock/get_repo.json", Repo.class);
+        presenter.onRepoClicked(repo);
+        verify(screenNavigator).goToRepoDetails(repo.owner().login(), repo.name());
     }
 
     private List<Repo> setUpSuccess() {
@@ -102,6 +110,6 @@ public class TrendingReposPresenterTest {
     }
 
     private void initializePresenter() {
-        presenter = new TrendingReposPresenter(viewModel, repoRepository);
+        presenter = new TrendingReposPresenter(viewModel, repoRepository, screenNavigator);
     }
 }

@@ -4,6 +4,7 @@ import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
 import com.alienstar.cyrus.advancedandroid.data.RepoRequester;
 import com.alienstar.cyrus.advancedandroid.di.ScreenScope;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
+import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
 
 import javax.inject.Inject;
 
@@ -13,13 +14,17 @@ import javax.inject.Inject;
 @ScreenScope
 class TrendingReposPresenter implements RepoAdapter.RepoClickedListener{
 
-    private TrendingReposViewModel viewModel;
-    private RepoRepository repoRepository;
+    private final TrendingReposViewModel viewModel;
+    private final RepoRepository repoRepository;
+    private final ScreenNavigator screenNavigator;
 
     @Inject
-    TrendingReposPresenter(TrendingReposViewModel viewModel, RepoRepository repoRepository){
+    TrendingReposPresenter(TrendingReposViewModel viewModel,
+                           RepoRepository repoRepository,
+                           ScreenNavigator screenNavigator){
         this.viewModel = viewModel;
         this.repoRepository = repoRepository;
+        this.screenNavigator = screenNavigator;
         loadRepos();
     }
 
@@ -32,6 +37,6 @@ class TrendingReposPresenter implements RepoAdapter.RepoClickedListener{
 
     @Override
     public void onRepoClicked(Repo repo) {
-
+        screenNavigator.goToRepoDetails(repo.owner().login(), repo.name());
     }
 }

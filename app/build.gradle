@@ -50,6 +50,8 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
     implementation "com.bluelinelabs:conductor:$rootProject.conductorVersion"
 
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
 

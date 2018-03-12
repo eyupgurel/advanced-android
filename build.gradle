@@ -46,6 +46,7 @@ ext{
     junitVersion = '4.12'
     espressoVersion = '3.0.1'
     testRunnerVersion = '1.0.1'
+    glideVersion = '4.6.1'
 }
 
 task clean(type: Delete) {

@@ -7,7 +7,10 @@ import android.support.test.runner.AndroidJUnit4;
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.base.TestApplication;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
+import com.alienstar.cyrus.advancedandroid.details.ContributorAdapter;
 import com.alienstar.cyrus.advancedandroid.home.MainActivity;
+import com.alienstar.cyrus.advancedandroid.test.ControllerTest;
+import com.bluelinelabs.conductor.Controller;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -27,22 +30,12 @@ import static org.hamcrest.core.AllOf.allOf;
  * Created by cyrus on 3/10/18.
  */
 @RunWith(AndroidJUnit4.class)
-public class TrendingReposControllerTest {
-    @Inject
-    TestRepoService repoService;
-
-    @Rule
-    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class, true,false);
-
-    @Before
-    public void setUp(){
-        TestApplication.getComponent().inject(this);
-    }
+public class TrendingReposControllerTest extends ControllerTest {
 
     @Test
     public void loadRepos() {
         repoService.setSendError(false);
-        activityRule.launchActivity(null);
+        launch();
 
         onView(withId(R.id.loading_indicator)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
         onView(withId(R.id.tv_error)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
@@ -54,12 +47,16 @@ public class TrendingReposControllerTest {
     @Test
     public void loadReposError(){
         repoService.setSendError(true);
-        activityRule.launchActivity(null);
-
+        launch();
         onView(withId(R.id.loading_indicator)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
         onView(withId(R.id.repo_list)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
 
         onView(withId(R.id.tv_error)).check(matches(allOf(withText(R.string.api_error_repos), withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE))));
 
+    }
+
+    @Override
+    protected Controller controllerToLaunch() {
+        return new TrendingReposController();
     }
 }
