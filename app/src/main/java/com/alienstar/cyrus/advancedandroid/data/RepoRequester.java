@@ -1,5 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.data;
 
+import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 
 import java.util.List;
@@ -21,13 +22,15 @@ public class RepoRequester {
     }
     public Single<List<Repo>> getTrendingRepos() {
         return service.getTrendingRepos()
-                .map(TrendingReposResponse::repos)
-                .subscribeOn(Schedulers.io());
+                .map(TrendingReposResponse::repos);
     }
 
     public Single<Repo> getRepo(String repoOwner, String repoName) {
-        return service.getRepo(repoOwner, repoName)
-                .subscribeOn(Schedulers.io());
+        return service.getRepo(repoOwner, repoName);
+    }
+
+    public Single<List<Contributor>> getContributors(String url) {
+        return service.getContributors(url);
     }
 
 }

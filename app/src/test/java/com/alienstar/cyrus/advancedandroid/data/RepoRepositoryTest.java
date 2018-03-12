@@ -11,9 +11,11 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Provider;
 
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -35,13 +37,11 @@ public class RepoRepositoryTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         when(repoRequesterProvider.get()).thenReturn(repoRequester);
-        repository = new RepoRepository(repoRequesterProvider);
-
         trendingReposResponse = TestUtils.loadJson("mock/get_trending_repos.json", TrendingReposResponse.class);
         when(repoRequester.getTrendingRepos()).thenReturn(Single.just(trendingReposResponse.repos()));
         rxJavaRepo = trendingReposResponse.repos().get(0);
         otherRepo = trendingReposResponse.repos().get(1);
-        repository = new RepoRepository(repoRequesterProvider);
+        repository = new RepoRepository(repoRequesterProvider, Schedulers.trampoline());
     }
 
     @Test

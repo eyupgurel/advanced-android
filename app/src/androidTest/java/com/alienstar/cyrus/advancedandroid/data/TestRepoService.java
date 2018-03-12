@@ -1,9 +1,11 @@
 package com.alienstar.cyrus.advancedandroid.data;
 
+import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.test.TestUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -38,7 +40,15 @@ public class TestRepoService implements RepoService  {
         return null;
     }
 
+    @Override
+    public Single<List<Contributor>> getContributors(String url) {
+        return null;
+    }
+
     public void setSendError(boolean sendError){
         this.sendError = sendError;
     }
+
+
+
 }
