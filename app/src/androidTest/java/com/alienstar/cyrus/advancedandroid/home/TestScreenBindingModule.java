@@ -1,5 +1,7 @@
 package com.alienstar.cyrus.advancedandroid.home;
 
+import com.alienstar.cyrus.advancedandroid.details.RepoDetailsComponent;
+import com.alienstar.cyrus.advancedandroid.details.RepoDetailsController;
 import com.alienstar.cyrus.advancedandroid.di.ControllerKey;
 import com.alienstar.cyrus.advancedandroid.trending.TrendingReposComponent;
 import com.alienstar.cyrus.advancedandroid.trending.TrendingReposController;
@@ -15,10 +17,16 @@ import dagger.multibindings.IntoMap;
  */
 @Module(subcomponents = {
         TrendingReposComponent.class,
+        RepoDetailsComponent.class
 })
 public abstract class TestScreenBindingModule {
     @Binds
     @IntoMap
     @ControllerKey(TrendingReposController.class)
     abstract AndroidInjector.Factory<? extends Controller> bindTrendingReposInjector(TrendingReposComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @ControllerKey(RepoDetailsController.class)
+    abstract  AndroidInjector.Factory<? extends Controller> bindRepoDetailsInjector(RepoDetailsComponent.Builder builder);
 }
