@@ -15,7 +15,7 @@ import dagger.multibindings.IntoMap;
  * Created by cyrus on 3/4/18.
  */
 @Module(subcomponents = {
-        MainActivityComponent.class,
+        MainActivityComponent.class
 })
 public abstract class ActivityBindingModule {
     @Binds

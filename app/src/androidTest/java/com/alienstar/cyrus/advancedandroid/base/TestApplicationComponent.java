@@ -23,7 +23,7 @@ import dagger.Component;
         TestRepoServiceModule.class,
         ServiceModule.class,
         TestNavigationModule.class,
-        TestActivityViewInterceptorModule.class,
+        TestActivityViewInterceptorModule.class
 })
 public interface TestApplicationComponent extends ApplicationComponent {
     void inject(TrendingReposControllerTest trendingReposControllerTest);

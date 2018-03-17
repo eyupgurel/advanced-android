@@ -12,8 +12,9 @@ import dagger.android.AndroidInjector;
  */
 @ActivityScope
 @Subcomponent(modules = {
-                        MainScreenBindingModule.class, NavigationModule.class,
-                        ActivityViewInterceptorModule.class,
+                        MainScreenBindingModule.class,
+                        NavigationModule.class,
+                        ActivityViewInterceptorModule.class
 })
 public interface MainActivityComponent extends AndroidInjector<MainActivity>{
     @Subcomponent.Builder
@@ -21,3 +22,4 @@ public interface MainActivityComponent extends AndroidInjector<MainActivity>{
 
     }
 }
+
