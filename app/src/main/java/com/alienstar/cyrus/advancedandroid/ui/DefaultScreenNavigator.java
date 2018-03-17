@@ -1,7 +1,10 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
+import android.support.v7.app.AppCompatActivity;
+
 import com.alienstar.cyrus.advancedandroid.details.RepoDetailsController;
 import com.alienstar.cyrus.advancedandroid.di.ActivityScope;
+import com.alienstar.cyrus.advancedandroid.lifecycle.ActivityLifecycleTask;
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
@@ -12,8 +15,8 @@ import javax.inject.Inject;
 /**
  * Created by cyrus on 3/6/18.
  */
-
-public class DefaultScreenNavigator implements ScreenNavigator {
+@ActivityScope
+public class DefaultScreenNavigator extends ActivityLifecycleTask implements ScreenNavigator {
     private Router router;
     @Inject
     DefaultScreenNavigator(){
@@ -21,6 +24,14 @@ public class DefaultScreenNavigator implements ScreenNavigator {
     }
 
     @Override
+    public void onCreate(AppCompatActivity activity) {
+       if(!(activity instanceof RouterProvider)){
+           throw new IllegalArgumentException("Activity must be an implementation of RouterProvider interface");
+       }
+        RouterProvider routerProvider = (RouterProvider) activity;
+        initWithRouter(routerProvider.getRouter(), routerProvider.initialScreen());
+    }
+
     public void initWithRouter(Router router, Controller rootScreen) {
         this.router = router;
         if(!router.hasRootController()){
@@ -43,7 +54,8 @@ public class DefaultScreenNavigator implements ScreenNavigator {
     }
 
     @Override
-    public void clear() {
+    public void onDestroy(AppCompatActivity activity) {
         router = null;
     }
+
 }

@@ -4,10 +4,11 @@ import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
 
 /**
- * Created by cyrus on 3/6/18.
+ * Created by cyrus on 3/17/18.
  */
 
-public interface ScreenNavigator {
-    boolean pop();
-    void goToRepoDetails(String repoOwner, String repoName);
+public interface RouterProvider {
+    Router getRouter();
+
+    Controller initialScreen();
 }

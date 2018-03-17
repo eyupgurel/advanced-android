@@ -1,5 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
+import android.support.v7.app.AppCompatActivity;
+
+import com.alienstar.cyrus.advancedandroid.lifecycle.ActivityLifecycleTask;
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
 
@@ -10,20 +13,19 @@ import javax.inject.Singleton;
  * Created by cyrus on 3/12/18.
  */
 @Singleton
-public class TestScreenNavigator implements ScreenNavigator {
+public class TestScreenNavigator extends ActivityLifecycleTask implements ScreenNavigator {
 
     private final DefaultScreenNavigator defaultScreenNavigator;
     private Controller overrideController;
 
     @Inject
-    TestScreenNavigator(DefaultScreenNavigator defaultScreenNavigator) {
-
-        this.defaultScreenNavigator = defaultScreenNavigator;
+    TestScreenNavigator() {
+        this.defaultScreenNavigator = new DefaultScreenNavigator();
     }
 
     /**
      * Set the Controller to launch when the Activity attaches to the ScreenNavigator. This will be
-     * used instead of the Controller passed in to {@link ScreenNavigator#initWithRouter(Router, Controller}
+     * used instead of the Controller provided by {@link RouterProvider#initialScreen()}
      *
      *
      * @param overrideController Controller to launch when Activity starts. Or null to fall back to default
@@ -35,10 +37,13 @@ public class TestScreenNavigator implements ScreenNavigator {
     }
 
     @Override
-    public void initWithRouter(Router router, Controller rootScreen) {
-        Controller launchController = overrideController == null ? rootScreen : overrideController;
-        defaultScreenNavigator.initWithRouter(router, launchController);
-
+    public void onCreate(AppCompatActivity activity) {
+        if(!(activity instanceof RouterProvider)){
+            throw new IllegalArgumentException("Activity must be an implementation of RouterProvider interface");
+        }
+        RouterProvider routerProvider = (RouterProvider) activity;
+        Controller launchController = overrideController == null ? routerProvider.initialScreen() : overrideController;
+        defaultScreenNavigator.initWithRouter(routerProvider.getRouter(), launchController);
     }
 
     @Override
@@ -52,7 +57,7 @@ public class TestScreenNavigator implements ScreenNavigator {
     }
 
     @Override
-    public void clear() {
-        defaultScreenNavigator.clear();
+    public void onDestroy(AppCompatActivity activity) {
+        defaultScreenNavigator.onDestroy(activity);
     }
 }
