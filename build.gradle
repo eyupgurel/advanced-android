@@ -39,6 +39,7 @@ ext{
     rxJavaVersion = '2.1.10'
     rxAndroidVersion = '2.0.2'
     rxRelayVersion = '2.0.0'
+    rxBindingVersion = '2.0.0'
     conductorVersion = '2.1.4'
     timberVersion = '4.6.1'
     butterknifeVersion ='8.8.1'

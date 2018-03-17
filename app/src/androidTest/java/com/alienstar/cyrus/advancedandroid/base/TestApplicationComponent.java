@@ -5,6 +5,7 @@ import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoServiceModule;
 import com.alienstar.cyrus.advancedandroid.networking.ServiceModule;
 import com.alienstar.cyrus.advancedandroid.trending.TrendingReposControllerTest;
+import com.alienstar.cyrus.advancedandroid.ui.TestActivityViewInterceptorModule;
 import com.alienstar.cyrus.advancedandroid.ui.TestNavigationModule;
 import com.alienstar.cyrus.advancedandroid.ui.TestScreenNavigator;
 
@@ -22,6 +23,7 @@ import dagger.Component;
         TestRepoServiceModule.class,
         ServiceModule.class,
         TestNavigationModule.class,
+        TestActivityViewInterceptorModule.class,
 })
 public interface TestApplicationComponent extends ApplicationComponent {
     void inject(TrendingReposControllerTest trendingReposControllerTest);

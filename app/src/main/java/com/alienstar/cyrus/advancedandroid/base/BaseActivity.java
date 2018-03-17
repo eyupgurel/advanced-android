@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.di.Injector;
 import com.alienstar.cyrus.advancedandroid.di.ScreenInjector;
+import com.alienstar.cyrus.advancedandroid.ui.ActivityViewInterceptor;
 import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Controller;
@@ -28,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static String INSTANCE_ID_KEY = "instance_id";
     @Inject ScreenInjector screenInjector;
     @Inject ScreenNavigator screenNavigator;
+    @Inject ActivityViewInterceptor activityViewInterceptor;
     private String instanceId;
     private Router router;
     @Override
@@ -38,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             instanceId = UUID.randomUUID().toString();
         }
         Injector.inject(this);
-        setContentView(layoutRes());
+        activityViewInterceptor.setContentView(this, layoutRes());
         ViewGroup screenContainer = findViewById(R.id.screen_container);
         if(screenContainer == null){
             throw new NullPointerException("Activity must have a view with id: screen_container");
@@ -77,6 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(isFinishing()){
             Injector.clearComponent(this);
         }
+        activityViewInterceptor.clear();
     }
 
     public ScreenInjector getScreenInjector(){

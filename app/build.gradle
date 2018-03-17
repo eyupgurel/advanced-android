@@ -44,6 +44,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxRelayVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBindingVersion"
+
     implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threeTenAbpVersion"
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
