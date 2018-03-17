@@ -1,6 +1,7 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
+import com.alienstar.cyrus.advancedandroid.lifecycle.DisposableManager;
 import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
@@ -34,6 +35,7 @@ public class RepoDetailsPresenterTest {
     @Mock Consumer<List<Contributor>> contributorConsumer;
     @Mock Consumer<Throwable> detailErrorConsumer;
     @Mock Consumer<Throwable> contributorErrorConsumer;
+    @Mock DisposableManager disposableManager;
 
     private Repo repo = TestUtils.loadJson("mock/repos/get_repo.json", Repo.class);
     private List<Contributor> contributors = TestUtils.loadJson("mock/repos/contributors/get_contributors.json",
@@ -84,6 +86,6 @@ public class RepoDetailsPresenterTest {
     }
 
     private void initPresenter(){
-        new RepoDetailsPresenter(OWNER, NAME, repoRepository, viewModel);
+        new RepoDetailsPresenter(OWNER, NAME, repoRepository, viewModel, disposableManager);
     }
 }

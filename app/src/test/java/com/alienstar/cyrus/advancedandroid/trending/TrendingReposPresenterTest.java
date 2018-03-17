@@ -13,6 +13,7 @@ import java.util.List;
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
 import com.alienstar.cyrus.advancedandroid.data.RepoRequester;
 import com.alienstar.cyrus.advancedandroid.data.TrendingReposResponse;
+import com.alienstar.cyrus.advancedandroid.lifecycle.DisposableManager;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
 import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
@@ -32,6 +33,7 @@ public class TrendingReposPresenterTest {
     @Mock Consumer<List<Repo>> onSuccessConsumer;
     @Mock Consumer<Boolean> loadingConsumer;
     @Mock ScreenNavigator screenNavigator;
+    @Mock DisposableManager disposableManager;
 
     private TrendingReposPresenter presenter;
 
@@ -110,6 +112,6 @@ public class TrendingReposPresenterTest {
     }
 
     private void initializePresenter() {
-        presenter = new TrendingReposPresenter(viewModel, repoRepository, screenNavigator);
+        presenter = new TrendingReposPresenter(viewModel, repoRepository, screenNavigator, disposableManager);
     }
 }
