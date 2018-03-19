@@ -1,17 +1,23 @@
-package com.alienstar.cyrus.advancedandroid.trending;
+package com.alienstar.cyrus.poweradapter.adapter;
 
 import android.support.v7.util.DiffUtil;
 
+import com.alienstar.cyrus.poweradapter.item.RecyclerItem;
+
 import java.util.List;
 
-import com.alienstar.cyrus.advancedandroid.model.Repo;
+/**
+ * Created by cyrus on 3/18/18.
+ */
 
-public class RepoDiffCallback extends DiffUtil.Callback {
+public class RecyclerDiffCallback extends DiffUtil.Callback {
 
-    private final List<Repo> oldList;
-    private final List<Repo> newList;
+    private final List<? extends RecyclerItem> oldList;
+    private final List<? extends RecyclerItem> newList;
 
-    public RepoDiffCallback(List<Repo> oldList, List<Repo> newList) {
+    RecyclerDiffCallback(List<? extends RecyclerItem> oldList,
+                         List<? extends  RecyclerItem> newList){
+
         this.oldList = oldList;
         this.newList = newList;
     }
@@ -28,7 +34,7 @@ public class RepoDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldList.get(oldItemPosition).id() == newList.get(newItemPosition).id();
+        return oldList.get(oldItemPosition).getId() == newList.get(newItemPosition).getId();
     }
 
     @Override

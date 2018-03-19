@@ -11,15 +11,17 @@ import java.io.IOException;
 import java.util.List;
 
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
-import com.alienstar.cyrus.advancedandroid.data.RepoRequester;
 import com.alienstar.cyrus.advancedandroid.data.TrendingReposResponse;
 import com.alienstar.cyrus.advancedandroid.lifecycle.DisposableManager;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
 import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
+import com.alienstar.cyrus.poweradapter.adapter.RecyclerDataSource;
 
 import io.reactivex.Single;
+import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -27,13 +29,17 @@ import static org.mockito.Mockito.when;
 
 public class TrendingReposPresenterTest {
 
+    static {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler(schedulerCallable -> Schedulers.trampoline());
+    }
+
     @Mock RepoRepository repoRepository;
     @Mock TrendingReposViewModel viewModel;
     @Mock Consumer<Throwable> onErrorConsumer;
-    @Mock Consumer<List<Repo>> onSuccessConsumer;
     @Mock Consumer<Boolean> loadingConsumer;
     @Mock ScreenNavigator screenNavigator;
     @Mock DisposableManager disposableManager;
+    @Mock RecyclerDataSource dataSource;
 
     private TrendingReposPresenter presenter;
 
@@ -42,7 +48,7 @@ public class TrendingReposPresenterTest {
         MockitoAnnotations.initMocks(this);
         when(viewModel.loadingUpdated()).thenReturn(loadingConsumer);
         when(viewModel.onError()).thenReturn(onErrorConsumer);
-        when(viewModel.reposUpdated()).thenReturn(onSuccessConsumer);
+        when(viewModel.reposUpdated()).thenReturn(() -> {});
     }
 
     @Test
@@ -51,7 +57,7 @@ public class TrendingReposPresenterTest {
         initializePresenter();
 
         verify(repoRepository).getTrendingRepos();
-        verify(onSuccessConsumer).accept(repos);
+        verify(dataSource).setData(repos);
         verifyZeroInteractions(onErrorConsumer);
     }
 
@@ -61,7 +67,7 @@ public class TrendingReposPresenterTest {
         initializePresenter();
 
         verify(onErrorConsumer).accept(error);
-        verifyZeroInteractions(onSuccessConsumer);
+        verifyZeroInteractions(dataSource);
     }
 
     @Test
@@ -112,6 +118,10 @@ public class TrendingReposPresenterTest {
     }
 
     private void initializePresenter() {
-        presenter = new TrendingReposPresenter(viewModel, repoRepository, screenNavigator, disposableManager);
+        presenter = new TrendingReposPresenter(viewModel,
+                                                repoRepository,
+                                                screenNavigator,
+                                                disposableManager,
+                                                dataSource);
     }
 }

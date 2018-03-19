@@ -35,19 +35,12 @@ public class TrendingReposViewModelTest {
         loadingObserver.assertValues(true, false);
     }
 
-    @Test
-    public void repos() throws Exception {
-        TestObserver<List<Repo>> reposObserver = viewModel.repos().test();
-        TrendingReposResponse response = TestUtils.loadJson("mock/search/get_trending_repos.json", TrendingReposResponse.class);
-        viewModel.reposUpdated().accept(response.repos());
-        reposObserver.assertValue(response.repos());
-    }
 
     @Test
     public void error() throws Exception {
         TestObserver<Integer> errorObserver = viewModel.error().test();
         viewModel.onError().accept(new IOException());
-        viewModel.reposUpdated().accept(Collections.emptyList());
+        viewModel.reposUpdated().run();
         errorObserver.assertValues(R.string.api_error_repos, -1);
     }
 
