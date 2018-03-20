@@ -52,8 +52,14 @@ class RepoDetailsViewModel {
     Consumer<List<Contributor>> processContributors() {
         return contributors -> contributorStateRelay.accept(ContributorState.builder()
                                                             .loading(false)
-                                                            .contributors(contributors)
                                                             .build());
+    }
+
+    Consumer<Object> contributorsLoaded() {
+        return __ -> contributorStateRelay.accept(
+                ContributorState.builder()
+                                .loading(false)
+                                .build());
     }
 
     Consumer<Throwable> detailsError() {
@@ -77,5 +83,6 @@ class RepoDetailsViewModel {
                                                         .build()
                                                     );};
         }
+
 
 }

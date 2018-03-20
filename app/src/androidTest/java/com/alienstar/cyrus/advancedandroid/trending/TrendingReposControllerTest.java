@@ -1,23 +1,15 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
 import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.alienstar.cyrus.advancedandroid.R;
-import com.alienstar.cyrus.advancedandroid.base.TestApplication;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
-import com.alienstar.cyrus.advancedandroid.details.ContributorAdapter;
-import com.alienstar.cyrus.advancedandroid.home.MainActivity;
 import com.alienstar.cyrus.advancedandroid.test.ControllerTest;
 import com.bluelinelabs.conductor.Controller;
 
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import javax.inject.Inject;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;

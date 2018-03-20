@@ -5,6 +5,7 @@ import com.alienstar.cyrus.advancedandroid.lifecycle.DisposableManager;
 import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
+import com.alienstar.cyrus.poweradapter.adapter.RecyclerDataSource;
 import com.squareup.moshi.Types;
 
 import org.junit.Before;
@@ -16,7 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 import io.reactivex.Single;
+import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -26,16 +29,21 @@ import static org.mockito.Mockito.when;
  */
 public class RepoDetailsPresenterTest {
 
+    static {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler(schedulerCallable -> Schedulers.trampoline());
+    }
+
     private static final String OWNER = "owner";
     private static final String NAME = "name";
 
     @Mock RepoRepository repoRepository;
     @Mock RepoDetailsViewModel viewModel;
     @Mock Consumer<Repo> repoConsumer;
-    @Mock Consumer<List<Contributor>> contributorConsumer;
+    @Mock Consumer<Object> contributorConsumer;
     @Mock Consumer<Throwable> detailErrorConsumer;
     @Mock Consumer<Throwable> contributorErrorConsumer;
     @Mock DisposableManager disposableManager;
+    @Mock RecyclerDataSource dataSource;
 
     private Repo repo = TestUtils.loadJson("mock/repos/get_repo.json", Repo.class);
     private List<Contributor> contributors = TestUtils.loadJson("mock/repos/contributors/get_contributors.json",
@@ -46,7 +54,7 @@ public class RepoDetailsPresenterTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         when(viewModel.processRepo()).thenReturn(repoConsumer);
-        when(viewModel.processContributors()).thenReturn(contributorConsumer);
+        when(viewModel.contributorsLoaded()).thenReturn(contributorConsumer);
         when(viewModel.detailsError()).thenReturn(detailErrorConsumer);
         when(viewModel.contributorsError()).thenReturn(contributorErrorConsumer);
 
@@ -72,7 +80,7 @@ public class RepoDetailsPresenterTest {
     public void repoContributors() throws Exception {
         initPresenter();
 
-        verify(contributorConsumer).accept(contributors);
+        verify(dataSource).setData(contributors);
     }
 
     @Test
@@ -86,6 +94,6 @@ public class RepoDetailsPresenterTest {
     }
 
     private void initPresenter(){
-        new RepoDetailsPresenter(OWNER, NAME, repoRepository, viewModel, disposableManager);
+        new RepoDetailsPresenter(OWNER, NAME, repoRepository, viewModel, disposableManager, dataSource);
     }
 }

@@ -52,10 +52,6 @@ import java.util.Map;
         return (ItemRenderer<RecyclerItem>) renderers.get(viewTypeRendererKeyMap.get(viewType));
     }
 
-//    ItemRenderer<? extends RecyclerItem> rendererForType(int viewType) {
-//        return renderers.get(viewTypeRendererKeyMap.get(viewType));
-//    }
-
     @LayoutRes
     int viewResourceForPosition(int position) {
         return renderers.get(data.get(position).renderKey()).layoutRes();
