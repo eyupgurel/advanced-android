@@ -1,5 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alienstar.cyrus.advancedandroid.R;
+import com.alienstar.cyrus.advancedandroid.database.favorites.FavoriteService;
 import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.poweradapter.item.ItemRenderer;
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnLongClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by cyrus on 3/19/18.
@@ -23,9 +29,12 @@ import butterknife.ButterKnife;
 
 class ContributorRenderer implements ItemRenderer<Contributor> {
 
-    @Inject
-    ContributorRenderer() {
+    private final FavoriteService favoriteService;
 
+    @Inject
+    ContributorRenderer(FavoriteService favoriteService) {
+
+        this.favoriteService = favoriteService;
     }
 
     @Override
@@ -36,7 +45,7 @@ class ContributorRenderer implements ItemRenderer<Contributor> {
     @Override
     public View createView(@NonNull ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layoutRes(), parent, false);
-        view.setTag(new ViewBinder(view));
+        view.setTag(new ViewBinder(view, favoriteService));
         return view;
     }
 
@@ -48,12 +57,47 @@ class ContributorRenderer implements ItemRenderer<Contributor> {
     static class ViewBinder{
         @BindView(R.id.tv_user_name) TextView usernameText;
         @BindView(R.id.iv_avatar) ImageView avatarImageView;
+        @BindView(R.id.parent_view) View parentView;
 
-        ViewBinder(View itemView){
+        private final FavoriteService favoriteService;
+        private Contributor contributor;
+        private Disposable favoriteDisposable;
+
+        ViewBinder(View itemView, FavoriteService favoriteService){
+            this.favoriteService = favoriteService;
             ButterKnife.bind(this, itemView);
+            RxView.attachEvents(parentView)
+                    .subscribe(event -> {
+                        if(event.view().isAttachedToWindow()){
+                            listenForFavoriteChanges();
+                        } else {
+                            if(favoriteDisposable != null) {
+                                favoriteDisposable.dispose();
+                                favoriteDisposable = null;
+                            }
+                        }
+                    });
+        }
+
+        @OnLongClick(R.id.parent_view)
+        boolean toggleFavorite(){
+            if(contributor != null){
+                favoriteService.toggleFavoriteContributor(contributor);
+            }
+            return true;
+        }
+
+        private void listenForFavoriteChanges() {
+            favoriteDisposable = favoriteService.favoritedContributorIds()
+                    .filter(__ -> contributor != null)
+                    .map(favoriteIds -> favoriteIds.contains(contributor.id()))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(isFavorite ->
+                            parentView.setBackgroundColor(isFavorite ? Color.YELLOW : Color.TRANSPARENT));
         }
 
         void bind(Contributor contributor){
+            this.contributor = contributor;
             usernameText.setText(contributor.login());
             Glide.with(avatarImageView.getContext())
                     .load(contributor.avatarUrl())

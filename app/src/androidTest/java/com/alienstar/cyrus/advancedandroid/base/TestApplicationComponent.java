@@ -3,6 +3,7 @@ package com.alienstar.cyrus.advancedandroid.base;
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoServiceModule;
+import com.alienstar.cyrus.advancedandroid.database.DatabaseModule;
 import com.alienstar.cyrus.advancedandroid.networking.ServiceModule;
 import com.alienstar.cyrus.advancedandroid.trending.TrendingReposControllerTest;
 import com.alienstar.cyrus.advancedandroid.ui.TestActivityViewInterceptorModule;
@@ -23,7 +24,8 @@ import dagger.Component;
         TestRepoServiceModule.class,
         ServiceModule.class,
         TestNavigationModule.class,
-        TestActivityViewInterceptorModule.class
+        TestActivityViewInterceptorModule.class,
+        DatabaseModule.class
 })
 public interface TestApplicationComponent extends ApplicationComponent {
     void inject(TrendingReposControllerTest trendingReposControllerTest);
