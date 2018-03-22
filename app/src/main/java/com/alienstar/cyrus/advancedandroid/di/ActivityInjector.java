@@ -21,6 +21,8 @@ import dagger.android.AndroidInjector;
 public class ActivityInjector {
     private final Map<Class<? extends Activity>, Provider<AndroidInjector.Factory<? extends Activity>>> activityInjectors;
     private final Map<String, AndroidInjector<? extends Activity>> cache = new HashMap<>();
+    // Whenever a class has an @Inject annotation dagger will implement a factory for this class and
+    // this class will itself be also injectable
     @Inject
     ActivityInjector(Map<Class<? extends Activity>, Provider<AndroidInjector.Factory<? extends Activity>>> activityInjectors){
         this.activityInjectors = activityInjectors;

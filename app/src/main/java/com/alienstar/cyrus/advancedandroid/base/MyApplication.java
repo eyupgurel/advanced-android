@@ -27,6 +27,7 @@ public class MyApplication extends Application {
     }
 
     protected ApplicationComponent initComponent(){
+        //Only top level components has Dagger component classes
         return DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
