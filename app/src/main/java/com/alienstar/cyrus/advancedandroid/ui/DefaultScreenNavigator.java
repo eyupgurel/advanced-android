@@ -25,9 +25,9 @@ public class DefaultScreenNavigator extends ActivityLifecycleTask implements Scr
 
     @Override
     public void onCreate(AppCompatActivity activity) {
-       if(!(activity instanceof RouterProvider)){
+        if(!(activity instanceof RouterProvider)){
            throw new IllegalArgumentException("Activity must be an implementation of RouterProvider interface");
-       }
+        }
         RouterProvider routerProvider = (RouterProvider) activity;
         initWithRouter(routerProvider.getRouter(), routerProvider.initialScreen());
     }

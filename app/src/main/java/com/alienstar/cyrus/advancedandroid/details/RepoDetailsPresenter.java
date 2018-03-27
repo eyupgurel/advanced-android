@@ -24,14 +24,14 @@ public class RepoDetailsPresenter {
                          @ForScreen DisposableManager disposableManager,
                          RecyclerDataSource contributorDataSource) {
       disposableManager.add(repoRepository.getRepo(repoOwner, repoName)
-                            .doOnSuccess(viewModel.processRepo())
-                            .doOnError(viewModel.detailsError())
-                            .flatMap(repo -> repoRepository.getContributors(repo.contributorsUrl())
-                            .doOnError(viewModel.contributorsError()))
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .doOnSuccess(contributorDataSource::setData)
-                            .subscribe(viewModel.contributorsLoaded(), throwable -> {
-                                // We handle logging in the view model
-                            }));
+                                          .doOnSuccess(viewModel.processRepo())
+                                          .doOnError(viewModel.detailsError())
+                                          .flatMap(repo -> repoRepository.getContributors(repo.contributorsUrl())
+                                          .doOnError(viewModel.contributorsError()))
+                                          .observeOn(AndroidSchedulers.mainThread())
+                                          .doOnSuccess(contributorDataSource::setData)
+                                          .subscribe(viewModel.contributorsLoaded(), throwable -> {
+                                                // We handle logging in the view model
+                                          }));
     }
 }

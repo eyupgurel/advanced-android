@@ -42,24 +42,19 @@ class RepoDetailsViewModel {
 
     Consumer<Repo> processRepo() {
         return repo -> detailStateRelay.accept(RepoDetailState.builder()
-                                        .loading(false)
-                                        .name(repo.name())
-                                        .description(repo.description())
-                                        .createdDate(repo.createdDate().format(DATE_FORMATTER))
-                                        .updatedDate(repo.updatedDate().format(DATE_FORMATTER))
-                                        .build());
-    }
-    Consumer<List<Contributor>> processContributors() {
-        return contributors -> contributorStateRelay.accept(ContributorState.builder()
-                                                            .loading(false)
-                                                            .build());
+                                                              .loading(false)
+                                                              .name(repo.name())
+                                                              .description(repo.description())
+                                                              .createdDate(repo.createdDate().format(DATE_FORMATTER))
+                                                              .updatedDate(repo.updatedDate().format(DATE_FORMATTER))
+                                                              .build());
     }
 
     Consumer<Object> contributorsLoaded() {
         return __ -> contributorStateRelay.accept(
-                ContributorState.builder()
-                                .loading(false)
-                                .build());
+                        ContributorState.builder()
+                                        .loading(false)
+                                        .build());
     }
 
     Consumer<Throwable> detailsError() {

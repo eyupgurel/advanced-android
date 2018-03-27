@@ -87,7 +87,6 @@ public class RepoDetailsController extends BaseController {
                         createdDateText.setText(details.createdDate());
                         updatedDateText.setText(details.updatedDate());
                     }
-
             }),
             viewModel.contributors()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -109,7 +108,6 @@ public class RepoDetailsController extends BaseController {
                         }
 
                     }
-
             })
         };
     }
