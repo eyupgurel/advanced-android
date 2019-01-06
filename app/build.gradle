@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -67,6 +68,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
     androidTestImplementation "androidx.test:rules:$rootProject.testRunnerVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 def mockCopySpec = copySpec {
@@ -84,4 +86,7 @@ task copyMock(type: Copy){
 }
 
 build.finalizedBy(copyMock)
+repositories {
+    mavenCentral()
+}
 
