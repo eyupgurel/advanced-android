@@ -1,7 +1,7 @@
 package com.alienstar.cyrus.advancedandroid.test;
 
 import android.app.Activity;
-import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule;
 
 import com.alienstar.cyrus.advancedandroid.base.TestApplication;
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
