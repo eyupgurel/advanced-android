@@ -1,7 +1,7 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.runner.AndroidJUnit4;
+//import android.support.test.espresso.matcher.ViewMatchers;
+//import android.support.test.runner.AndroidJUnit4;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
@@ -11,6 +11,9 @@ import com.bluelinelabs.conductor.Controller;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.runner.AndroidJUnit4;
 
 
 /**

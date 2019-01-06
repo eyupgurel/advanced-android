@@ -1,6 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.base;
 
-import android.support.test.InstrumentationRegistry;
+//import android.support.test.InstrumentationRegistry;
+
+import androidx.test.InstrumentationRegistry;
 
 /**
  * Created by cyrus on 3/10/18.

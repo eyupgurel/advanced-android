@@ -1,7 +1,7 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.runner.AndroidJUnit4;
+//import android.support.test.espresso.matcher.ViewMatchers;
+//import android.support.test.runner.AndroidJUnit4;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
@@ -11,11 +11,19 @@ import com.bluelinelabs.conductor.Controller;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+//import static android.support.test.espresso.Espresso.onView;
+//import static android.support.test.espresso.assertion.ViewAssertions.matches;
+//import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
+//import static android.support.test.espresso.matcher.ViewMatchers.withId;
+//import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.runner.AndroidJUnit4;
+
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
 
 /**

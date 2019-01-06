@@ -1,7 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.test;
 
 import android.app.Activity;
-import android.support.test.rule;
+//import android.support.test.rule.ActivityTestRule;
+//
 
 import com.alienstar.cyrus.advancedandroid.base.TestApplication;
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
@@ -9,6 +10,8 @@ import com.alienstar.cyrus.advancedandroid.data.TestRepoService;
 import com.alienstar.cyrus.advancedandroid.ui.TestScreenNavigator;
 
 import junit.framework.Test;
+
+import androidx.test.rule.ActivityTestRule;
 
 /**
  * Created by cyrus on 3/12/18.
