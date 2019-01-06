@@ -32,7 +32,7 @@ ext{
     supportLibraryVersion = '28.0.0'
     daggerVersion = '2.19'
     retrofitVersion = '2.5.0'
-    moshiVersion = '1.6.0'
+    moshiVersion = '1.8.0'
     autoValueVersion = '1.5.1'
     autoValueMoshiVersion = '0.4.5'
     threeTenAbpVersion = '1.1.0'
