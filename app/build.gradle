@@ -64,9 +64,9 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
 
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation "androidx.test:rules:$rootProject.testRunnerVersion"
 }
 
 def mockCopySpec = copySpec {

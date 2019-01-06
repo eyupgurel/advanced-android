@@ -45,8 +45,8 @@ ext{
     butterknifeVersion ='8.8.1'
     mockitoVersion ='2.18.3'
     junitVersion = '4.12'
-    espressoVersion = '3.1.0'
-    testRunnerVersion = '1.1.0'
+    espressoVersion = '3.1.1'
+    testRunnerVersion = '1.1.1'
     glideVersion = '4.7.1'
     archComponentsVersion = '1.1.1'
 }
