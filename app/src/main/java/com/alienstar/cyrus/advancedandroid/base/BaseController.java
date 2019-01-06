@@ -45,7 +45,7 @@ public abstract class BaseController extends Controller {
         // Controller instances are retained config changes, so this method can be called more than once.
         // This makes sure we do not waste any time injecting more than once, though technically it would not change functionality.
         if(!injected){
-            Injector.inject(this);
+            Injector.INSTANCE.inject(this);
             injected = true;
         }
         super.onContextAvailable(context);

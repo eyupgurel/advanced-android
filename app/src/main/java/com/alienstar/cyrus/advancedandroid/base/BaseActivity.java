@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements RouterPr
         } else {
             instanceId = UUID.randomUUID().toString();
         }
-        Injector.inject(this);
+        Injector.INSTANCE.inject(this);
         activityViewInterceptor.setContentView(this, layoutRes());
         ViewGroup screenContainer = findViewById(R.id.screen_container);
         if(screenContainer == null){
@@ -95,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity implements RouterPr
     protected void onDestroy() {
         super.onDestroy();
         if(isFinishing()){
-            Injector.clearComponent(this);
+            Injector.INSTANCE.clearComponent(this);
         }
         activityViewInterceptor.clear();
 
@@ -148,7 +148,7 @@ public abstract class BaseActivity extends AppCompatActivity implements RouterPr
                                           @NonNull ViewGroup container,
                                           @NonNull ControllerChangeHandler handler) {
                 if(!isPush && from != null) {
-                    Injector.clearComponent(from);
+                    Injector.INSTANCE.clearComponent(from);
                 }
 
             }
