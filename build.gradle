@@ -8,7 +8,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'org.codehaus.groovy:groovy-android-gradle-plugin:2.0.0'
         // NOTE: Do not place your application dependencies here; they belong
@@ -32,7 +32,7 @@ ext{
     minSdkVersion = 26
     targetSdkVersion = 28
     supportLibraryVersion = '28.0.0'
-    daggerVersion = '2.19'
+    daggerVersion = '2.20'
     retrofitVersion = '2.5.0'
     moshiVersion = '1.8.0'
     autoValueVersion = '1.5.1'

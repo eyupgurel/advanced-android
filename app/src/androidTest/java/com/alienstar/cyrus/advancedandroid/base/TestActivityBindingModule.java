@@ -2,12 +2,12 @@ package com.alienstar.cyrus.advancedandroid.base;
 
 import android.app.Activity;
 
+import com.alienstar.cyrus.advancedandroid.di.ActivityKey;
 import com.alienstar.cyrus.advancedandroid.home.MainActivity;
 import com.alienstar.cyrus.advancedandroid.home.TestMainActivityComponent;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.android.ActivityKey;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
