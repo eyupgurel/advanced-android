@@ -11,7 +11,7 @@ import dagger.android.AndroidInjector
  * Created by cyrus on 3/4/18.
  */
 @ActivityScope
-@Subcomponent(modules = arrayOf(MainScreenBindingModule::class, NavigationModule::class, ActivityViewInterceptorModule::class))
+@Subcomponent(modules = [MainScreenBindingModule::class, NavigationModule::class, ActivityViewInterceptorModule::class])
 //Components has injecting role rather than defining and implementing an inject method we can
 // extend AndroidInjector<T> interface of which dagger will handle the implementation for us.
 interface MainActivityComponent : AndroidInjector<MainActivity> {
