@@ -10,6 +10,6 @@ import dagger.Provides;
 public abstract class TestActivityViewInterceptorModule {
     @Provides
     static ActivityViewInterceptor provideActivityViewInterceptor() {
-        return ActivityViewInterceptor.DEFAULT;
+        return ActivityViewInterceptor.Companion.getDEFAULT();
     }
 }
