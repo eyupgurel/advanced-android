@@ -1,7 +1,10 @@
 package com.alienstar.cyrus.advancedandroid.database;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+//import android.arch.persistence.room.Database;
+//import android.arch.persistence.room.RoomDatabase;
+
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import com.alienstar.cyrus.advancedandroid.database.favorites.FavoriteContributor;
 import com.alienstar.cyrus.advancedandroid.database.favorites.FavoriteContributorDao;
@@ -10,7 +13,7 @@ import com.alienstar.cyrus.advancedandroid.database.favorites.FavoriteContributo
  * Created by cyrus on 3/20/18.
  */
 
-@Database(entities = FavoriteContributor.class, version = 1)
-public abstract class AppDatabase extends RoomDatabase{
+@Database(entities = FavoriteContributor.class, version = 1,exportSchema = false)
+public abstract class AppDatabase extends RoomDatabase {
     public abstract FavoriteContributorDao favoriteContributorDao();
 }

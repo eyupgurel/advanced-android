@@ -1,10 +1,13 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
+
+
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.base.BaseController;
@@ -39,12 +42,15 @@ public class RepoDetailsController extends BaseController {
     @Inject RepoDetailsPresenter presenter;
     @Inject RecyclerDataSource contributorDataSource;
 
-    @BindView(R.id.tv_repo_name) TextView repoNameText;
+    @BindView(R.id.tv_repo_name)
+    TextView repoNameText;
     @BindView(R.id.tv_repo_description) TextView repoDescriptionText;
     @BindView(R.id.tv_creation_date) TextView createdDateText;
     @BindView(R.id.tv_updated_date) TextView updatedDateText;
-    @BindView(R.id.contributor_list) RecyclerView contributorList;
-    @BindView(R.id.loading_indicator) View detailsLoadingView;
+    @BindView(R.id.contributor_list)
+    RecyclerView contributorList;
+    @BindView(R.id.loading_indicator)
+    View detailsLoadingView;
     @BindView(R.id.contributor_loading_indicator) View contributorsLoadingView;
     @BindView(R.id.content) View contentContainer;
     @BindView(R.id.tv_error) TextView errorText;

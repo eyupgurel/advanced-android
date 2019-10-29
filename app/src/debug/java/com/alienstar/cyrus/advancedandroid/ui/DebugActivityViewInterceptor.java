@@ -1,5 +1,12 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
+//import android.app.Activity;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.Switch;
+
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +30,8 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class DebugActivityViewInterceptor implements ActivityViewInterceptor {
 
-    @BindView(R.id.sw_mock_responses) Switch mockResponseSwitch;
+    @BindView(R.id.sw_mock_responses)
+    Switch mockResponseSwitch;
 
     private final DebugPreferences debugPreferences;
     private final CompositeDisposable disposables = new CompositeDisposable();

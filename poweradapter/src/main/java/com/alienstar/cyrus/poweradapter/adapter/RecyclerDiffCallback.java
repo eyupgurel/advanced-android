@@ -1,6 +1,8 @@
 package com.alienstar.cyrus.poweradapter.adapter;
 
-import android.support.v7.util.DiffUtil;
+//import android.support.v7.util.DiffUtil;
+
+import androidx.recyclerview.widget.DiffUtil;
 
 import com.alienstar.cyrus.poweradapter.item.RecyclerItem;
 

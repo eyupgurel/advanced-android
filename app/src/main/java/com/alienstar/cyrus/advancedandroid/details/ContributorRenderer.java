@@ -1,12 +1,21 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
+//import android.graphics.Color;
+//import android.support.annotation.NonNull;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.ImageView;
+//import android.widget.TextView;
+
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.database.favorites.FavoriteService;
@@ -55,8 +64,8 @@ class ContributorRenderer implements ItemRenderer<Contributor> {
     }
 
     static class ViewBinder{
-        @BindView(R.id.tv_user_name) TextView usernameText;
-        @BindView(R.id.iv_avatar) ImageView avatarImageView;
+        @BindView(R.id.tv_user_name)TextView usernameText;
+        @BindView(R.id.iv_avatar)ImageView avatarImageView;
         @BindView(R.id.parent_view) View parentView;
 
         private final FavoriteService favoriteService;

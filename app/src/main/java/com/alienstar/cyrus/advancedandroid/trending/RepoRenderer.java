@@ -1,10 +1,12 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
-import android.support.annotation.NonNull;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
@@ -49,7 +51,8 @@ import butterknife.ButterKnife;
     }
 
     static class ViewBinder {
-        @BindView(R.id.tv_repo_name) TextView repoNameText;
+        @BindView(R.id.tv_repo_name)
+        TextView repoNameText;
         @BindView(R.id.tv_repo_description) TextView repoDescriptionText;
         @BindView(R.id.tv_fork_count) TextView forkCountText;
         @BindView(R.id.tv_star_count) TextView starCountText;

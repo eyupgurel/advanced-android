@@ -1,7 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.di.ScreenScope;
@@ -19,7 +20,8 @@ import butterknife.Unbinder;
  */
 @ScreenScope
 public class TrendingReposUIManager extends ScreenLifecycleTask {
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Unbinder unbinder;
 
     @Inject

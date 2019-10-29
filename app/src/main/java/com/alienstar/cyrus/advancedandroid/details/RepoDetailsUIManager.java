@@ -1,7 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
-import android.support.v7.widget.Toolbar;
+
 import android.view.View;
+import androidx.appcompat.widget.Toolbar;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.lifecycle.ScreenLifecycleTask;
@@ -22,7 +23,8 @@ import butterknife.Unbinder;
 public class RepoDetailsUIManager extends ScreenLifecycleTask {
     private final String repoName;
     private final ScreenNavigator screenNavigator;
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Unbinder unbinder;
 
     @Inject

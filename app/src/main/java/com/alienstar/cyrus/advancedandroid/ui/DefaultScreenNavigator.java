@@ -1,6 +1,8 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
-import android.support.v7.app.AppCompatActivity;
+
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alienstar.cyrus.advancedandroid.details.RepoDetailsController;
 import com.alienstar.cyrus.advancedandroid.di.ActivityScope;

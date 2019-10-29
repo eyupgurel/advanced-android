@@ -1,8 +1,11 @@
 package com.alienstar.cyrus.poweradapter.adapter;
 
-import android.support.annotation.NonNull;
+
+
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.alienstar.cyrus.poweradapter.item.ItemRenderer;
 import com.alienstar.cyrus.poweradapter.item.RecyclerItem;

@@ -1,9 +1,12 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.base.BaseController;
 import com.alienstar.cyrus.poweradapter.adapter.RecyclerAdapter;
@@ -23,9 +26,12 @@ public class TrendingReposController extends BaseController {
     @Inject TrendingReposViewModel viewModel;
     @Inject RecyclerDataSource dataSource;
 
-    @BindView(R.id.repo_list) RecyclerView repoList;
-    @BindView(R.id.loading_indicator) View loadingView;
-    @BindView(R.id.tv_error) TextView errorText;
+    @BindView(R.id.repo_list)
+    RecyclerView repoList;
+    @BindView(R.id.loading_indicator)
+    View loadingView;
+    @BindView(R.id.tv_error)
+    TextView errorText;
 
     @Override
     protected void onViewBound(View view) {

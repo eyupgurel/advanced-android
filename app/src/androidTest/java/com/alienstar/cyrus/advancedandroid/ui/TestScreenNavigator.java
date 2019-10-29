@@ -1,10 +1,12 @@
 package com.alienstar.cyrus.advancedandroid.ui;
 
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alienstar.cyrus.advancedandroid.lifecycle.ActivityLifecycleTask;
 import com.bluelinelabs.conductor.Controller;
-import com.bluelinelabs.conductor.Router;
+//import com.bluelinelabs.conductor.Controller;
+//import com.bluelinelabs.conductor.Router;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -1,11 +1,17 @@
 package com.alienstar.cyrus.poweradapter.adapter;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.MainThread;
-import android.support.annotation.VisibleForTesting;
-import android.support.v7.util.DiffUtil;
-import android.support.v7.widget.RecyclerView;
+//import android.support.annotation.LayoutRes;
+//import android.support.annotation.MainThread;
+//import android.support.annotation.VisibleForTesting;
+//import android.support.v7.util.DiffUtil;
+//import androidx.recyclerview.widget.RecyclerView;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.MainThread;
+import androidx.annotation.VisibleForTesting;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alienstar.cyrus.poweradapter.item.ItemRenderer;
 import com.alienstar.cyrus.poweradapter.item.RecyclerItem;

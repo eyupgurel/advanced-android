@@ -1,6 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.model;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.squareup.moshi.FromJson;
 import com.squareup.moshi.ToJson;
