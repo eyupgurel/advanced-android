@@ -32,7 +32,7 @@ ext{
     minSdkVersion = 28
     targetSdkVersion = 29
     supportLibraryVersion = '29.0.0'
-    daggerVersion = '2.20'
+    daggerVersion = '2.22'
     retrofitVersion = '2.5.0'
     moshiVersion = '1.8.0'
     autoValueVersion = '1.5.1'
