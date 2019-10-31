@@ -11,7 +11,7 @@ import dagger.android.AndroidInjector
  * Created by cyrus on 3/5/18.
  */
 @ScreenScope
-@Subcomponent(modules = arrayOf(ScreenModule::class, TrendingReposScreenModule::class))
+@Subcomponent(modules = [ScreenModule::class, TrendingReposScreenModule::class])
 interface TrendingReposComponent : ScreenComponent<TrendingReposController> {
     @Subcomponent.Builder
     abstract class Builder : AndroidInjector.Builder<TrendingReposController>()

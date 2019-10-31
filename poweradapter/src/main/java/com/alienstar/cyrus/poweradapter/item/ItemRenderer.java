@@ -1,7 +1,5 @@
 package com.alienstar.cyrus.poweradapter.item;
 
-//import android.support.annotation.LayoutRes;
-//import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 

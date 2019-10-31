@@ -15,7 +15,7 @@ import dagger.multibindings.IntoMap
 /**
  * Created by cyrus on 3/5/18.
  */
-@Module(subcomponents = arrayOf(TrendingReposComponent::class, RepoDetailsComponent::class))
+@Module(subcomponents = [TrendingReposComponent::class, RepoDetailsComponent::class])
 abstract class MainScreenBindingModule {
     @Binds
     @IntoMap
