@@ -45,7 +45,7 @@ ext{
     conductorVersion = '2.1.5'
     timberVersion = '4.7.1'
     butterknifeVersion ='10.2.0'
-    mockitoVersion ='2.23.4'
+    mockitoVersion ='3.1.0'
     junitVersion = '4.12'
     espressoVersion = '3.1.1'
     testRunnerVersion = '1.1.1'
