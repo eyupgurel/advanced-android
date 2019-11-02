@@ -8,8 +8,9 @@ import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
 import com.alienstar.cyrus.poweradapter.adapter.RecyclerDataSource;
 import com.squareup.moshi.Types;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -50,7 +51,7 @@ public class RepoDetailsPresenterTest {
                                                                     Types.newParameterizedType(List.class, Contributor.class));
     private String contributorsUrl = repo.contributorsUrl();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         when(viewModel.processRepo()).thenReturn(repoConsumer);

@@ -10,15 +10,15 @@ import androidx.annotation.NonNull;
 import com.alienstar.cyrus.poweradapter.item.ItemRenderer;
 import com.alienstar.cyrus.poweradapter.item.RecyclerItem;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by cyrus on 3/18/18.
@@ -32,7 +32,7 @@ public class RecyclerDataSourceTest {
 
     private RecyclerDataSource dataSource;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         List<RecyclerItem> items = Arrays.<RecyclerItem>asList(itemOne, itemTwo, itemThree);
         Map<String, ItemRenderer<? extends RecyclerItem>> renderers = new HashMap<>();

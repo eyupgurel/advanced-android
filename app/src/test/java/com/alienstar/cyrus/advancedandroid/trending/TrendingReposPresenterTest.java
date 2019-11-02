@@ -50,7 +50,7 @@ public class TrendingReposPresenterTest {
     public void reposLoaded() throws Exception {
         //  setup mocks
         List<Repo> repos = setUpSuccess();
-        //  activate
+        //  run unit
         initializePresenter();
         //  verify
         verify(repoRepository).getTrendingRepos();

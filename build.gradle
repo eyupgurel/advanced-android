@@ -32,25 +32,6 @@ ext{
     minSdkVersion = 28
     targetSdkVersion = 29
     supportLibraryVersion = '29.0.0'
-    daggerVersion = '2.22'
-    retrofitVersion = '2.5.0'
-    moshiVersion = '1.8.0'
-    autoValueVersion = '1.5.1'
-    autoValueMoshiVersion = '0.4.5'
-    threeTenAbpVersion = '1.1.1'
-    rxJavaVersion = '2.2.5'
-    rxAndroidVersion = '2.1.1'
-    rxRelayVersion = '2.1.0'
-    rxBindingVersion = '2.2.0'
-    conductorVersion = '2.1.5'
-    timberVersion = '4.7.1'
-    butterknifeVersion ='10.2.0'
-    mockitoVersion ='3.1.0'
-    junitVersion = '4.12'
-    espressoVersion = '3.1.1'
-    testRunnerVersion = '1.1.1'
-    glideVersion = '4.10.0'
-    archComponentsVersion = '1.1.1'
 }
 
 task clean(type: Delete) {

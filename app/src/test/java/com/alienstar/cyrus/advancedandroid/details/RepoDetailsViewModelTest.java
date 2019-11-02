@@ -1,18 +1,13 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
 import com.alienstar.cyrus.advancedandroid.R;
-import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
-import com.squareup.moshi.Types;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by cyrus on 3/11/18.
@@ -24,7 +19,7 @@ public class RepoDetailsViewModelTest {
     private Repo repo = TestUtils.loadJson("mock/repos/get_repo.json", Repo.class);
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         viewModel = new RepoDetailsViewModel();
     }

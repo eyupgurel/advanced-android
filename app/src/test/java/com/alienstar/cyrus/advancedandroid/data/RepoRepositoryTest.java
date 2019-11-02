@@ -3,22 +3,19 @@ package com.alienstar.cyrus.advancedandroid.data;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.inject.Provider;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +30,7 @@ public class RepoRepositoryTest {
     private Repo rxJavaRepo;
     private Repo otherRepo;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         when(repoRequesterProvider.get()).thenReturn(repoRequester);

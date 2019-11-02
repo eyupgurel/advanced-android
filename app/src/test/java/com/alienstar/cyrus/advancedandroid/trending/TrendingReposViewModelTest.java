@@ -1,20 +1,10 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
 import com.alienstar.cyrus.advancedandroid.R;
-import com.alienstar.cyrus.advancedandroid.data.TrendingReposResponse;
-import com.alienstar.cyrus.advancedandroid.model.Repo;
-import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
-
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-
 import io.reactivex.observers.TestObserver;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by cyrus on 3/9/18.
@@ -22,7 +12,7 @@ import static org.junit.Assert.*;
 public class TrendingReposViewModelTest {
     private TrendingReposViewModel viewModel;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         viewModel = new TrendingReposViewModel();
     }

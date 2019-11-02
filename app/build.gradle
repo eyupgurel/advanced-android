@@ -4,7 +4,7 @@ apply plugin: 'groovyx.android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion '29.0.2'
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.alienstar.cyrus.advancedandroid"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -42,72 +42,105 @@ dependencies {
 
     implementation project(":poweradapter")
 
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    def  daggerVersion = "2.22"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
-    implementation "com.squareup.moshi:moshi:$rootProject.moshiVersion"
-    annotationProcessor "com.ryanharter.auto.value:auto-value-moshi:$rootProject.autoValueMoshiVersion"
-    compileOnly "com.ryanharter.auto.value:auto-value-moshi-annotations:$rootProject.autoValueMoshiVersion"
+    def  retrofitVersion = "2.5.0"
 
-    compileOnly "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
-    annotationProcessor "com.google.auto.value:auto-value:$rootProject.autoValueVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
-    implementation "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxRelayVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBindingVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
-    implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threeTenAbpVersion"
-    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
-    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    def autoValueVersion = "1.5.1"
+    compileOnly "com.google.auto.value:auto-value:$autoValueVersion"
+    annotationProcessor "com.google.auto.value:auto-value:$autoValueVersion"
 
-    implementation 'com.bluelinelabs:conductor:3.0.0-rc1'
+    def  moshiVersion = "1.8.0"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    def autoValueMoshiVersion = "0.4.5"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-moshi:$autoValueMoshiVersion"
+    compileOnly "com.ryanharter.auto.value:auto-value-moshi-annotations:$autoValueMoshiVersion"
+
+    def  rxJavaVersion = "2.2.5"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    def rxAndroidVersion = "2.1.1"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    def  rxRelayVersion = "2.1.0"
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
+    def  rxBindingVersion = "2.2.0"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion"
+
+    def threeTenAbpVersion = "1.1.1"
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbpVersion"
+
+    def timberVersion = "4.7.1"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    def  butterknifeVersion ="10.2.0"
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+
+    def conductorVersion = "3.0.0-rc1"
+
+    implementation "com.bluelinelabs:conductor:$conductorVersion"
 
 // If you want the components that go along with
 // Android's support libraries (currently just a PagerAdapter):
-    implementation 'com.bluelinelabs:conductor-support:3.0.0-rc1'
+    implementation "com.bluelinelabs:conductor-support:$conductorVersion"
 
 // If you want RxJava lifecycle support:
-    implementation 'com.bluelinelabs:conductor-rxlifecycle:3.0.0-rc1'
+    implementation "com.bluelinelabs:conductor-rxlifecycle:$conductorVersion"
 
 // If you want RxJava2 lifecycle support:
-    implementation 'com.bluelinelabs:conductor-rxlifecycle2:3.0.0-rc1'
+    implementation "com.bluelinelabs:conductor-rxlifecycle2:$conductorVersion"
 
 // If you want RxJava2 Autodispose support:
-    implementation 'com.bluelinelabs:conductor-autodispose:3.0.0-rc1'
+    implementation "com.bluelinelabs:conductor-autodispose:$conductorVersion"
 
 // If you want Controllers that are Lifecycle-aware (architecture components):
-    implementation 'com.bluelinelabs:conductor-archlifecycle:3.0.0-rc1'
-
-    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
-
-    implementation 'androidx.room:room-runtime:2.2.1'
-    implementation 'androidx.room:room-rxjava2:2.2.1'
-    annotationProcessor 'androidx.room:room-compiler:2.2.1'
+    implementation "com.bluelinelabs:conductor-archlifecycle:$conductorVersion"
 
 
+    def glideVersion = "4.10.0"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
+    def room_version = "2.2.1"
 
-    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testImplementation "junit:junit:$rootProject.junitVersion"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
 
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
-    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
-    androidTestImplementation "androidx.test:rules:$rootProject.testRunnerVersion"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    def espressoVersion = "3.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    def testRunnerVersion = "1.1.1"
+    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
+    androidTestImplementation "androidx.test:rules:$testRunnerVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    testImplementation 'org.mockito:mockito-junit-jupiter:3.1.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    def mockitoVersion = "3.1.0"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
 
-
-
+    def junitVersion = "5.5.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 
 def mockCopySpec = copySpec {
