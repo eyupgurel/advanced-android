@@ -5,13 +5,10 @@ import android.app.Application;
 import com.alienstar.cyrus.advancedandroid.data.RepoServiceModule;
 import com.alienstar.cyrus.advancedandroid.database.DatabaseModule;
 import com.alienstar.cyrus.advancedandroid.networking.ServiceModule;
-
 import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
-import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
  * Created by cyrus on 3/4/18.

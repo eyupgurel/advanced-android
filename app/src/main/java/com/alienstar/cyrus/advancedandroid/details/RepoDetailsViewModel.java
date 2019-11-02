@@ -2,13 +2,9 @@ package com.alienstar.cyrus.advancedandroid.details;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.di.ScreenScope;
-import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.jakewharton.rxrelay2.BehaviorRelay;
-
 import org.threeten.bp.format.DateTimeFormatter;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

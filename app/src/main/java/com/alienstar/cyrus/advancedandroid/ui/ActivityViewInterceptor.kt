@@ -3,9 +3,6 @@ package com.alienstar.cyrus.advancedandroid.ui
 import android.app.Activity
 import androidx.annotation.LayoutRes
 
-//import android.app.Activity
-//import android.support.annotation.LayoutRes
-
 /**
  * Created by cyrus on 3/16/18.
  */

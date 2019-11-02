@@ -1,8 +1,4 @@
 package com.alienstar.cyrus.advancedandroid.database;
-
-//import android.arch.persistence.room.Database;
-//import android.arch.persistence.room.RoomDatabase;
-
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 

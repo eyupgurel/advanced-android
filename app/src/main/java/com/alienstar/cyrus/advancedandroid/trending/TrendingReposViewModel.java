@@ -2,9 +2,7 @@ package com.alienstar.cyrus.advancedandroid.trending;
 
 import com.alienstar.cyrus.advancedandroid.R;
 import com.alienstar.cyrus.advancedandroid.di.ScreenScope;
-import com.alienstar.cyrus.advancedandroid.model.Repo;
 import com.jakewharton.rxrelay2.BehaviorRelay;
-import java.util.List;
 import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.functions.Action;

@@ -1,6 +1,4 @@
 package com.alienstar.cyrus.advancedandroid.details;
-
-
 import android.view.View;
 import androidx.appcompat.widget.Toolbar;
 

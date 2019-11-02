@@ -1,15 +1,5 @@
 package com.alienstar.cyrus.advancedandroid.trending;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InOrder;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.alienstar.cyrus.advancedandroid.data.RepoRepository;
 import com.alienstar.cyrus.advancedandroid.data.TrendingReposResponse;
 import com.alienstar.cyrus.advancedandroid.lifecycle.DisposableManager;
@@ -18,21 +8,34 @@ import com.alienstar.cyrus.advancedandroid.testutils.TestUtils;
 import com.alienstar.cyrus.advancedandroid.ui.ScreenNavigator;
 import com.alienstar.cyrus.poweradapter.adapter.RecyclerDataSource;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+
 import io.reactivex.Single;
 import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
-public class TrendingReposPresenterTest {
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
+import java.util.List;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("TrendingReposPresenter test")
+public class TrendingReposPresenterTest {
     static {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler(schedulerCallable -> Schedulers.trampoline());
     }
-
     @Mock RepoRepository repoRepository;
     @Mock TrendingReposViewModel viewModel;
     @Mock Consumer<Throwable> onErrorConsumer;
@@ -43,35 +46,32 @@ public class TrendingReposPresenterTest {
 
     private TrendingReposPresenter presenter;
 
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        when(viewModel.loadingUpdated()).thenReturn(loadingConsumer);
-        when(viewModel.onError()).thenReturn(onErrorConsumer);
-        when(viewModel.reposUpdated()).thenReturn(() -> {});
-    }
-
     @Test
     public void reposLoaded() throws Exception {
+        //  setup mocks
         List<Repo> repos = setUpSuccess();
+        //  activate
         initializePresenter();
-
+        //  verify
         verify(repoRepository).getTrendingRepos();
         verify(dataSource).setData(repos);
-        verifyZeroInteractions(onErrorConsumer);
+        verifyNoInteractions(onErrorConsumer);
     }
+
 
     @Test
     public void reposLoadedError() throws Exception {
+
         Throwable error = setUpError();
         initializePresenter();
 
         verify(onErrorConsumer).accept(error);
-        verifyZeroInteractions(dataSource);
+        verifyNoInteractions(dataSource);
     }
 
     @Test
     public void loadingSuccess() throws Exception {
+
         setUpSuccess();
         initializePresenter();
 
@@ -102,6 +102,11 @@ public class TrendingReposPresenterTest {
     }
 
     private List<Repo> setUpSuccess() {
+        MockitoAnnotations.initMocks(this);
+        when(viewModel.loadingUpdated()).thenReturn(loadingConsumer);
+        when(viewModel.onError()).thenReturn(onErrorConsumer);
+        when(viewModel.reposUpdated()).thenReturn(() -> {});
+
         TrendingReposResponse response = TestUtils.loadJson("mock/search/get_trending_repos.json", TrendingReposResponse.class);
         List<Repo> repos = response.repos();
 
@@ -111,17 +116,19 @@ public class TrendingReposPresenterTest {
     }
 
     private Throwable setUpError() {
+        MockitoAnnotations.initMocks(this);
+        when(viewModel.loadingUpdated()).thenReturn(loadingConsumer);
+        when(viewModel.onError()).thenReturn(onErrorConsumer);
         Throwable error = new IOException();
         when(repoRepository.getTrendingRepos()).thenReturn(Single.error(error));
-
         return error;
     }
 
     private void initializePresenter() {
         presenter = new TrendingReposPresenter(viewModel,
-                                                repoRepository,
-                                                screenNavigator,
-                                                disposableManager,
-                                                dataSource);
+                repoRepository,
+                screenNavigator,
+                disposableManager,
+                dataSource);
     }
 }

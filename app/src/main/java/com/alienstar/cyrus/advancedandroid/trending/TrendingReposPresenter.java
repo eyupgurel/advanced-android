@@ -39,9 +39,9 @@ class TrendingReposPresenter{
 
     private void loadRepos() {
         disposableManager.add(repoRepository.getTrendingRepos()
-                            .doOnSubscribe(__ -> viewModel.loadingUpdated().accept(true))
+                            .doOnSubscribe( __ -> viewModel.loadingUpdated().accept(true))
                             .doOnEvent((d,t) -> viewModel.loadingUpdated().accept(false))
-                            .doOnSuccess(__ -> viewModel.reposUpdated().run())
+                            .doOnSuccess( __ -> viewModel.reposUpdated().run())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(dataSource::setData, viewModel.onError()));
     }

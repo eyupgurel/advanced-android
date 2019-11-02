@@ -1,8 +1,5 @@
 package com.alienstar.cyrus.advancedandroid.lifecycle
-
 import androidx.appcompat.app.AppCompatActivity
-
-//import android.support.v7.app.AppCompatActivity
 
 /**
  * Created by cyrus on 3/17/18.

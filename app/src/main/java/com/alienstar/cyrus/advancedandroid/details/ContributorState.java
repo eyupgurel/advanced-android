@@ -1,10 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.details;
 
-import com.alienstar.cyrus.advancedandroid.model.Contributor;
 import com.google.auto.value.AutoValue;
-
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 /**

@@ -1,7 +1,4 @@
 package com.alienstar.cyrus.advancedandroid.database;
-
-
-
 import android.content.Context;
 
 import androidx.room.Room;

@@ -1,13 +1,10 @@
 package com.alienstar.cyrus.advancedandroid.base;
 
-
-
 import android.app.Application;
 import android.content.Context;
-
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
+
 
 /**
  * Created by cyrus on 3/4/18.
