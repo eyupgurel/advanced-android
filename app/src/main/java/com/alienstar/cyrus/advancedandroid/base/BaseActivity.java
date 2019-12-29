@@ -25,39 +25,39 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-/**
- * Created by cyrus on 3/5/18.
- */
-
 public abstract class BaseActivity extends AppCompatActivity implements RouterProvider {
-    private static String INSTANCE_ID_KEY = "instance_id";
+
+    private static final String INSTANCE_ID_KEY = "instance_id";
+
     @Inject ScreenInjector screenInjector;
     @Inject ScreenNavigator screenNavigator;
     @Inject ActivityViewInterceptor activityViewInterceptor;
     @Inject Set<ActivityLifecycleTask> activityLifecycleTasks;
+
     private String instanceId;
     private Router router;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             instanceId = savedInstanceState.getString(INSTANCE_ID_KEY);
         } else {
             instanceId = UUID.randomUUID().toString();
         }
-        Injector.INSTANCE.inject(this);
+        Injector.inject(this);
+        super.onCreate(savedInstanceState);
+
         activityViewInterceptor.setContentView(this, layoutRes());
         ViewGroup screenContainer = findViewById(R.id.screen_container);
-        if(screenContainer == null){
+        if (screenContainer == null) {
             throw new NullPointerException("Activity must have a view with id: screen_container");
         }
+
         router = Conductor.attachRouter(this, screenContainer, savedInstanceState);
         monitorBackStack();
-
-        for(ActivityLifecycleTask task: activityLifecycleTasks) {
+        for (ActivityLifecycleTask task : activityLifecycleTasks) {
             task.onCreate(this);
         }
-
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -93,31 +93,14 @@ public abstract class BaseActivity extends AppCompatActivity implements RouterPr
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(isFinishing()){
-            Injector.INSTANCE.clearComponent(this);
-        }
-        activityViewInterceptor.clear();
-
-        for (ActivityLifecycleTask task : activityLifecycleTasks) {
-            task.onDestroy(this);
-        }
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(INSTANCE_ID_KEY, instanceId);
-    }
-    public String getInstanceId(){
-        return instanceId;
     }
 
     @Override
     public void onBackPressed() {
-        if(!screenNavigator.pop()){
+        if (!screenNavigator.pop()) {
             super.onBackPressed();
         }
     }
@@ -127,37 +110,52 @@ public abstract class BaseActivity extends AppCompatActivity implements RouterPr
         return router;
     }
 
-    public ScreenInjector getScreenInjector(){
-        return screenInjector;
-    }
-
-    private void monitorBackStack(){
-        router.addChangeListener(new ControllerChangeHandler.ControllerChangeListener() {
-            @Override
-            public void onChangeStarted(@Nullable Controller to,
-                                        @Nullable Controller from,
-                                        boolean isPush,
-                                        @NonNull ViewGroup container,
-                                        @NonNull ControllerChangeHandler handler) {
-
-            }
-
-            @Override
-            public void onChangeCompleted(@Nullable Controller to,
-                                          @Nullable Controller from,
-                                          boolean isPush,
-                                          @NonNull ViewGroup container,
-                                          @NonNull ControllerChangeHandler handler) {
-                if(!isPush && from != null) {
-                    Injector.INSTANCE.clearComponent(from);
-                }
-
-            }
-        });
-    }
-
     @LayoutRes
     protected abstract int layoutRes();
 
-    public abstract Controller initialScreen();
+    public String getInstanceId() {
+        return instanceId;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            Injector.clearComponent(this);
+        }
+        activityViewInterceptor.clear();
+        for (ActivityLifecycleTask task : activityLifecycleTasks) {
+            task.onDestroy(this);
+        }
+    }
+
+    public ScreenInjector getScreenInjector() {
+        return screenInjector;
+    }
+
+    private void monitorBackStack() {
+        router.addChangeListener(new ControllerChangeHandler.ControllerChangeListener() {
+            @Override
+            public void onChangeStarted(
+                    @Nullable Controller to,
+                    @Nullable Controller from,
+                    boolean isPush,
+                    @NonNull ViewGroup container,
+                    @NonNull ControllerChangeHandler handler) {
+
+            }
+
+            @Override
+            public void onChangeCompleted(
+                    @Nullable Controller to,
+                    @Nullable Controller from,
+                    boolean isPush,
+                    @NonNull ViewGroup container,
+                    @NonNull ControllerChangeHandler handler) {
+                if (!isPush && from != null) {
+                    Injector.clearComponent(from);
+                }
+            }
+        });
+    }
 }

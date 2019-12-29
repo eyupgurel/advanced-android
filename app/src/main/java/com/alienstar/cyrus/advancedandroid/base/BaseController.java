@@ -1,4 +1,6 @@
 package com.alienstar.cyrus.advancedandroid.base;
+
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,29 +25,30 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-/**
- * Created by cyrus on 3/5/18.
- */
-
 public abstract class BaseController extends Controller {
 
-    @Inject Set<ScreenLifecycleTask> screenLifecycleTasks;
+    @Inject
+    Set<ScreenLifecycleTask> screenLifecycleTasks;
+
     private final CompositeDisposable disposables = new CompositeDisposable();
+
     private boolean injected = false;
     private Unbinder unbinder;
 
     public BaseController() {
         super();
     }
-    public BaseController(Bundle bundle){
+
+    public BaseController(Bundle bundle) {
         super(bundle);
     }
+
     @Override
     protected void onContextAvailable(@NonNull Context context) {
-        // Controller instances are retained config changes, so this method can be called more than once.
-        // This makes sure we do not waste any time injecting more than once, though technically it would not change functionality.
-        if(!injected){
-            Injector.INSTANCE.inject(this);
+        // Controller instances are retained across config changes, so this method can be called more than once. This makes
+        // sure we don't waste any time injecting more than once, though technically it wouldn't change functionality.
+        if (!injected) {
+            Injector.inject(this);
             injected = true;
         }
         super.onContextAvailable(context);
@@ -63,8 +66,8 @@ public abstract class BaseController extends Controller {
 
     @Override
     protected void onChangeStarted(@NonNull ControllerChangeHandler changeHandler, @NonNull ControllerChangeType changeType) {
-        for(ScreenLifecycleTask task: screenLifecycleTasks){
-            if(changeType.isEnter) {
+        for (ScreenLifecycleTask task : screenLifecycleTasks) {
+            if (changeType.isEnter) {
                 task.onEnterScope(getView());
             } else {
                 task.onExitScope(getView());
@@ -74,9 +77,8 @@ public abstract class BaseController extends Controller {
 
     @Override
     protected void onDestroyView(@NonNull View view) {
-        //super.onDestroyView(view);
         disposables.clear();
-        if(unbinder!=null){
+        if (unbinder != null) {
             unbinder.unbind();
             unbinder = null;
         }
@@ -85,18 +87,19 @@ public abstract class BaseController extends Controller {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        for(ScreenLifecycleTask task: screenLifecycleTasks) {
+        for (ScreenLifecycleTask task : screenLifecycleTasks) {
             task.onDestroy(getView());
         }
     }
 
-    protected void onViewBound(View view){
+    protected void onViewBound(View view) {
 
     }
 
-    protected Disposable[] subscriptions(){
+    protected Disposable[] subscriptions() {
         return new Disposable[0];
     }
+
     @LayoutRes
     protected abstract int layoutRes();
 }
