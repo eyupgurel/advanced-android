@@ -26,12 +26,9 @@ public class TrendingReposController extends BaseController {
     @Inject TrendingReposViewModel viewModel;
     @Inject RecyclerDataSource dataSource;
 
-    @BindView(R.id.repo_list)
-    RecyclerView repoList;
-    @BindView(R.id.loading_indicator)
-    View loadingView;
-    @BindView(R.id.tv_error)
-    TextView errorText;
+    @BindView(R.id.repo_list) RecyclerView repoList;
+    @BindView(R.id.loading_indicator) View loadingView;
+    @BindView(R.id.tv_error) TextView errorText;
 
     @Override
     protected void onViewBound(View view) {

@@ -17,9 +17,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 
-/**
- * Created by cyrus on 3/10/18.
- */
+
 @Singleton
 @Component(modules = {
         ApplicationModule.class,

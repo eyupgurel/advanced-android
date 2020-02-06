@@ -31,7 +31,9 @@ class TrendingReposViewModel {
         return loadingRelay;
     }
     Action reposUpdated(){
-       return () -> errorRelay.accept(-1);
+       return () -> {
+           errorRelay.accept(-1);
+       };
     }
     Consumer<Throwable> onError(){
         return throwable -> {
