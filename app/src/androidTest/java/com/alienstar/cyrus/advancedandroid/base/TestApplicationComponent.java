@@ -16,6 +16,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
 
 
 @Singleton
@@ -28,7 +29,7 @@ import dagger.Component;
         TestActivityViewInterceptorModule.class,
         DatabaseModule.class
 })
-public interface TestApplicationComponent extends ApplicationComponent {
+public interface TestApplicationComponent   extends AndroidInjector<TestApplication> {
     void inject(TrendingReposControllerTest trendingReposControllerTest);
 
     TestScreenNavigator screenNavigator();

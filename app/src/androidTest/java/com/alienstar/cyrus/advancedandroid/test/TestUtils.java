@@ -14,10 +14,8 @@ import javax.inject.Inject;
 
 public class TestUtils {
     private final Moshi moshi;
-
     @Inject
     TestUtils(Moshi moshi){
-
         this.moshi = moshi;
     }
     public <T> T loadJson(String path, Type type){

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.alienstar.cyrus.advancedandroid.base.BaseActivity;
 import com.alienstar.cyrus.advancedandroid.base.MyApplication;
+import com.alienstar.cyrus.advancedandroid.base.ProvidesActivityInjector;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +50,6 @@ public class ActivityInjector {
         cache.remove(((BaseActivity) activity).getInstanceId());
     }
     static ActivityInjector get (Context context){
-        return ((MyApplication) context.getApplicationContext()).getActivityInjector();
+        return ((ProvidesActivityInjector) context.getApplicationContext()).getActivityInjector();
     }
 }
