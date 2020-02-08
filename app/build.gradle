@@ -141,6 +141,8 @@ dependencies {
     def junitVersion = "5.5.2"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 }
 
 def mockCopySpec = copySpec {
