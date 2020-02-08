@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
     def testRunnerVersion = "1.1.1"
-    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testRunnerVersion"
     androidTestImplementation "androidx.test:rules:$testRunnerVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
