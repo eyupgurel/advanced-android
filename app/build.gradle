@@ -30,19 +30,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    def recyclerview_version = "1.0.0"
-
+    def recyclerview_version = "1.1.0"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     // For control over item selection of both touch and mouse driven selection
-    implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_version"
+    def recyclerview_selection_version = "1.0.0"
+    implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_selection_version"
 
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'androidx.cardview:cardview:1.0.0'
 
     implementation project(":poweradapter")
 
-    def  daggerVersion = "2.22"
+    def  daggerVersion = "2.26"
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -109,7 +109,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
-    def room_version = "2.2.1"
+    def room_version = "2.2.3"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
