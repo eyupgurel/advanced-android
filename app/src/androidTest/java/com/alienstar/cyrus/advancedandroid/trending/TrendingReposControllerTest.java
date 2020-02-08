@@ -9,8 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.espresso.matcher.ViewMatchers;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -22,7 +21,7 @@ import static org.hamcrest.core.AllOf.allOf;
 /**
  * Created by cyrus on 3/10/18.
  */
-@RunWith(AndroidJUnit4.class)
+@RunWith(AndroidJUnit4ClassRunner.class)
 public class TrendingReposControllerTest extends ControllerTest {
 
     @Test

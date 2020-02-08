@@ -10,13 +10,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.espresso.matcher.ViewMatchers;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 /**
  * Created by cyrus on 3/15/18.
  */
-@RunWith( AndroidJUnit4.class)
+@RunWith(AndroidJUnit4ClassRunner.class)
 public class RepoDetailsControllerTest extends ControllerTest {
 
     @Before
