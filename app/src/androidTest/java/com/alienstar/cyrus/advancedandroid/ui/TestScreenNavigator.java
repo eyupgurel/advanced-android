@@ -11,9 +11,7 @@ import com.bluelinelabs.conductor.Controller;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/**
- * Created by cyrus on 3/12/18.
- */
+
 @Singleton
 public class TestScreenNavigator extends ActivityLifecycleTask implements ScreenNavigator {
 

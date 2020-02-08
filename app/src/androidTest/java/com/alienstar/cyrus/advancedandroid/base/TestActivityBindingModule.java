@@ -11,9 +11,7 @@ import dagger.Module;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
-/**
- * Created by cyrus on 3/10/18.
- */
+
 @Module(subcomponents = TestMainActivityComponent.class)
 public abstract class TestActivityBindingModule {
     @Binds

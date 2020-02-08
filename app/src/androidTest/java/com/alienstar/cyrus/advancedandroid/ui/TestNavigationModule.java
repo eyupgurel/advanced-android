@@ -17,5 +17,4 @@ public abstract class TestNavigationModule {
     @Binds
     @IntoSet
     abstract ActivityLifecycleTask bindScreenNavigatorTask(TestScreenNavigator screenNavigator);
-
 }

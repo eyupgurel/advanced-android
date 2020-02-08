@@ -15,6 +15,6 @@ public class TestApplication extends MyApplication {
         return DaggerTestApplicationComponent.builder().application(this).build();
     }
     public static TestApplicationComponent getComponent() {
-       return (TestApplicationComponent) ((TestApplication) InstrumentationRegistry.getTargetContext().getApplicationContext()).component;
+       return (TestApplicationComponent) ((TestApplication) androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext()).component;
     }
 }
